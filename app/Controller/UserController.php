@@ -30,6 +30,7 @@ class UserController extends Controller{
                     
                     $_SESSION["isLogin"] = true;
                     $_SESSION["login"] = $userFromDB["login"];
+                    $_SESSION["user_id"] = $userFromDB["id"];
                    // header("Location: /user/");
                    
                      $response->json(["isLogin" => true, "message" => "Авторизация прошла успешно."]);

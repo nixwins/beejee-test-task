@@ -103,8 +103,9 @@ class TaskController extends Controller {
                 $email = $this->params["email"];
                 $text = $this->params["taskText"];
                 $status = $this->params["status"];
-
-                $updated = $taskModel->update($id, $username, $email, $text, $status);
+                $userID = $_SESSION["user_id"];
+                //echo $userID;
+                $updated = $taskModel->update($id, $username, $email, $text, $status, $userID);
             }     
 
             $task = $taskModel->getTask($id);
