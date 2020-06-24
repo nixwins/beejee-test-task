@@ -39,7 +39,7 @@ $count = $data["count"];
                              <label for="sortBySelect">Сортировка</label>
                              <select class="form-control" id="sortBySelect" name="sort">
                                  
-                                 <?php if($_SESSION["sort"] === 'username'){ ?>
+                                 <?php if($_SESSION["sort"] === 'username' || !isset($_SESSION["sort"])){ ?>
                                                     <option  value="username" selected>Имя пользователя</option>
                                                     <option value="email" >Email</option>
                                                     <option value="status" >Статус</option>
@@ -51,7 +51,7 @@ $count = $data["count"];
                                                     <option  value="username" >Имя пользователя</option>
                                                     <option value="email" >Email</option>
                                                     <option value="status" selected>Статус</option>
-                                <?php }  ?> 
+                                <?php  } ?>
                                                     
                                </select>
                         </div>
@@ -60,13 +60,14 @@ $count = $data["count"];
                             <label for="orderBySelect">Порядок</label>
                             <select class="form-control" id="orderBySelect" name="order">
                                 
-                                <?php if ($_SESSION["order"] === 'desc') { ?>
+                                <?php if ($_SESSION["order"] === 'desc' || !isset($_SESSION["order"]) ) { ?>
                                                 <option value="desc" selected="">в порядке убывания </option>
                                                 <option value="asc">в порядке возрастания </option>
                                  <?php } elseif ($_SESSION["order"] === 'asc') { ?>
-                                                <option value="desc" selected="">в порядке убывания </option>
-                                                <option value="asc">в порядке возрастания </option>
-                                <?php } ?> 
+                                                <option value="desc" >в порядке убывания </option>
+                                                <option value="asc" selected>в порядке возрастания </option>
+                                <?php } ?>
+                                         
                              </select>
                             
                         </div>
