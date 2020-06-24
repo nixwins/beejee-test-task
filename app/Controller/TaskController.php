@@ -13,7 +13,7 @@ class TaskController extends Controller {
 
         $username = isset($_POST['username']) ? $_POST['username'] : '';
         $email = isset($_POST['email']) ? $_POST['email'] : '';
-        $taskText = isset($_POST['tasktext']) ? $_POST['tasktext'] : '';
+        $taskText = isset($_POST['tasktext']) ? htmlspecialchars($_POST['tasktext']) : '';
         $taskStatus = "progress";
 
         $response = new Response();
@@ -97,15 +97,24 @@ class TaskController extends Controller {
               $taskModel = new Task();
               $update = $this->params["update"];
             if ($update == true) {
-                
+          
                 $id = $this->params["id"];
                 $username = $this->params["username"];
                 $email = $this->params["email"];
-                $text = $this->params["taskText"];
+                $text = htmlspecialchars($this->params["taskText"]);
+                
                 $status = $this->params["status"];
                 $userID = $_SESSION["user_id"];
                 //echo $userID;
-                $updated = $taskModel->update($id, $username, $email, $text, $status, $userID);
+                $savedTaskFromDB = $taskModel->getTask($id);
+                if($savedTaskFromDB["text"] === $text){
+                    $taskModel->update($id, $username, $email, $text, $status);
+                    
+                }else{
+                    $taskModel->update($id, $username, $email, $text, $status, $userID);
+                }
+                
+                
             }     
 
             $task = $taskModel->getTask($id);

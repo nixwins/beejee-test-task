@@ -106,7 +106,7 @@ $count = $data["count"];
                                 <tr>
                                     <td> <?php echo $task["username"]; ?></td>
                                     <td><?php echo $task["email"]; ?></td>
-                                    <td><?php echo $task["text"]; ?></td>
+                                    <td><?php echo $task["text"] ?></td>
                                     <td>
                                         <?php if($task["status"] == "done"){ ?>
                                                          <span>Выполнено</span>
