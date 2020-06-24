@@ -1,0 +1,23 @@
+{
+    "name": "beejee/task",
+    "description": "Test task for beejee",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dos Zh.",
+            "email": "halaulilau@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "klein/klein": "dev-master",
+        "gabordemooij/redbean": "dev-master"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    }
+}
