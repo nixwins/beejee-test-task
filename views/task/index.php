@@ -23,7 +23,7 @@ $count = $data["count"];
     <body>
         <div class="container">
             <div class="row">
-                <?php //echo password_hash("123", PASSWORD_BCRYPT); ?>
+             
                 <div class="topbar col col-lg-12">
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">Вход</button>
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createTaskModal">Добавить </button>
@@ -39,7 +39,7 @@ $count = $data["count"];
                              <label for="sortBySelect">Сортировка</label>
                              <select class="form-control" id="sortBySelect" name="sort">
                                  
-                                 <?php if($_SESSION["sort"] === 'username' || !isset($_SESSION["sort"])){ ?>
+                                 <?php if($_SESSION["sort"] === 'username'){ ?>
                                                     <option  value="username" selected>Имя пользователя</option>
                                                     <option value="email" >Email</option>
                                                     <option value="status" >Статус</option>
@@ -51,7 +51,11 @@ $count = $data["count"];
                                                     <option  value="username" >Имя пользователя</option>
                                                     <option value="email" >Email</option>
                                                     <option value="status" selected>Статус</option>
-                                <?php  } ?>
+                                <?php  }else{ ?>
+                                                    <option  value="username" selected>Имя пользователя</option>
+                                                        <option value="email" >Email</option>
+                                                        <option value="status" >Статус</option>
+                                <?php } ?>
                                                     
                                </select>
                         </div>
@@ -60,13 +64,16 @@ $count = $data["count"];
                             <label for="orderBySelect">Порядок</label>
                             <select class="form-control" id="orderBySelect" name="order">
                                 
-                                <?php if ($_SESSION["order"] === 'desc' || !isset($_SESSION["order"]) ) { ?>
-                                                <option value="desc" selected="">в порядке убывания </option>
+                                <?php if ($_SESSION["order"] == 'desc') { ?>
+                                                <option value="desc" selected>в порядке убывания </option>
                                                 <option value="asc">в порядке возрастания </option>
-                                 <?php } elseif ($_SESSION["order"] === 'asc') { ?>
+                                 <?php } elseif ($_SESSION["order"] == 'asc') { ?>
                                                 <option value="desc" >в порядке убывания </option>
                                                 <option value="asc" selected>в порядке возрастания </option>
-                                <?php } ?>
+                                <?php }else {?>
+                                                <option value="desc" selected>в порядке убывания </option>
+                                                <option value="asc" >в порядке возрастания </option>
+                                <?php }?>
                                          
                              </select>
                             
